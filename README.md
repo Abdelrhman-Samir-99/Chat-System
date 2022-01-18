@@ -19,11 +19,11 @@ Each table is a model.
 
 + there is a flaw in the logic.
     + I use chats_count + 1 to generate the Chat_id and the same for Message_id by using messages_count.
-    + The flaw happens when we delete a chat or a message then add a new entity.
+    + The flaw happens when we delete a chat or a message then add a new chat/message.
         + if we have chats {1, 2, 3} and chats_count = 3
         + if we remove the first chat -> {2, 3} and chats_count = 2
         + adding a new chat -> {2, 3, 3} and chats_count = 3.
-    + this bug can be fixed by adding a new indepndent column in message and chat models, to keep track of the total number.
+    + this bug can be fixed by adding a new indepndent column in Application and chat models, to keep track of the total number.
     + I will fix it, but After the deadline (because I just thought about it).
 + We can add some indecies to optimze some search queries if we won't use elasticsearch.
 + I also maintained the referential integrity (first I did that manually, then I learned how to let ActiveRecord handle it).
