@@ -25,6 +25,7 @@ Each table is a model.
         + adding a new chat -> {2, 3, 3} and chats_count = 3.
     + this bug can be fixed by adding a new indepndent column in Application and chat models, to keep track of the total number.
     + I will fix it, but After the deadline (because I just thought about it).
++ I tried to make the FK reference the application token, but I couldn't.
 + We can add some indecies to optimze some search queries if we won't use elasticsearch.
 + I also maintained the referential integrity (first I did that manually, then I learned how to let ActiveRecord handle it).
 + I tried not to write duplicate steps, by creating methods for each model. But I had problems with parameters (not sure, but it was automatically casted to array instead of a hash) and I'm not able to solve it "yet".
