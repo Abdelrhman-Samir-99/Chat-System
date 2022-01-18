@@ -28,6 +28,7 @@ Each table is a model.
 + We can add some indecies to optimze some search queries if we won't use elasticsearch.
 + I also maintained the referential integrity (first I did that manually, then I learned how to let ActiveRecord handle it).
 + I tried not to write duplicate steps, by creating methods for each model. But I had problems with parameters (not sure, but it was automatically casted to array instead of a hash) and I'm not able to solve it "yet".
++ I'm aware that I should use transactions instead of the long if conditions. (didn't know how to do it in Rails + had other things to do in the task)
 ## Controllers ##
 + ApplicationsController: Handling everything related to the application
 + ChatsController: Handling everything related to the chat.
