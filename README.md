@@ -69,4 +69,5 @@ And I would like to thank you for letting me know about this microservice "I bel
 ## Message Queue ##
 + I didn't even have enough time for this, since I had to learn ROR and this is actually my first RESTFul API to implement.
 + I have a little knowledge about message queue and how the handle loads on the server, by serving specific amount of customers/threads and use a database with {key, value} pair to save the result.
++ Also, I know a little about locks and concurrent programming to prevent overwriting values in the databases "theoretical knowledge only".
 + But since I'm just graduated, and don't really have work experience. I never exposed to a message queue as implementation, but I believe I used it once in Java while doing a multi-threading task.
