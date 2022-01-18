@@ -13,7 +13,8 @@
 ## Database (Models) ##
 
 Each table is a model.
-(put the image)
+
+![dbSchema](https://user-images.githubusercontent.com/77211992/150012374-2260b7ed-fe86-48b1-84a4-f1ffd9f4d868.png)
 
 
 + there is a flaw in the logic.
@@ -33,30 +34,30 @@ Each table is a model.
 ## Routes ##
 + Application routes:
     + POST methods:
-        + ("/application/create/:name"): Creating a new application.
+        + `/application/create/:name` Creating a new application.
     + GET methods:
-        + ("/application/index"): Shows all applications.
-        + ("/application/show/:application_token"): Shows a specific application.
+        + `/application/index` Shows all applications.
+        + `/application/show/:application_token` Shows a specific application.
     + DELETE methods:
-        + ("/application/delete/:application_token"): Delete a specific application with all of its chats and messages.
+        + `/application/delete/:application_token` Delete a specific application with all of its chats and messages.
 + Chat routes:
     + POST methods:
-        + ("/application/:application_token/chat/create"): Creating a new chat in a specific application.
+        + `application/:application_token/chat/create` Creating a new chat in a specific application.
     + GET methods:
-        + ("/application/:application_token/chat/index"): Shows all chats in a specific application.
-        + ("/application/:application_token/chat/show/:Chat_id"): Shows a specific chat using Chat_ID.
+        + `/application/:application_token/chat/index` Shows all chats in a specific application.
+        + `/application/:application_token/chat/show/:Chat_id` Shows a specific chat using Chat_ID.
     + DELETE methods: 
-        + ("/application/:application_token/chat/delete/:Chat_id"): Delete a specific chat with is messages.
+        + `/application/:application_token/chat/delete/:Chat_id` Delete a specific chat with is messages.
 + Message routes:
     + POST methods: 
-        + ("/application/:application_token/chat/:Chat_id/message/create/:body"): Creating a new message.
+        + `/application/:application_token/chat/:Chat_id/message/create/:body` Creating a new message.
     + GET methods: 
-        + ( "/application/:application_token/chat/:Chat_id/message/index"): Shows all messages for a specfic chat.
-        + ("/application/:application_token/chat/:Chat_id/message/show/:message_id"): Shows a specfic message in a specific chat.
+        + `/application/:application_token/chat/:Chat_id/message/index` Shows all messages for a specfic chat.
+        + `/application/:application_token/chat/:Chat_id/message/show/:message_id` Shows a specfic message in a specific chat.
     + PUT methods: 
-        + ("/application/:application_token/chat/:Chat_id/message/update/:message_id/:body"): Updating a specific message.
+        + `/application/:application_token/chat/:Chat_id/message/update/:message_id/:body` Updating a specific message.
     + DELETE methods: 
-        + ("/application/:application_token/chat/:Chat_id/message/delete/:message_id"): Delete a specific message.
+        + `/application/:application_token/chat/:Chat_id/message/delete/:message_id` Delete a specific message.
 ## ElasticSearch ##
 + I couldn't complete this task fully, but I wantched the first two lectures for the ElasticSearch on their official youtube channel and also I was following this blog, but I had an error when I was creating index for the message model that I couldn't solve (or find a solution).
 + My idea is just to make a single index for the Message model, and elasticsearch will fetch all the messages that are relevant to our query.
