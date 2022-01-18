@@ -58,8 +58,9 @@ Each table is a model.
         + `/application/:application_token/chat/:Chat_id/message/update/:message_id/:body` Updating a specific message.
     + DELETE methods: 
         + `/application/:application_token/chat/:Chat_id/message/delete/:message_id` Delete a specific message.
+
 ## ElasticSearch ##
-+ I couldn't complete this task fully, but I wantched the first two lectures for the ElasticSearch on their official youtube channel and also I was following this blog, but I had an error when I was creating index for the message model that I couldn't solve (or find a solution).
++ I couldn't complete this task fully, but I wantched the first two lectures for the ElasticSearch on their official youtube channel and also I was following this [blog](https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial), but I had an error when I was creating index for the message model that I couldn't solve (or find a solution).
 + My idea is just to make a single index for the Message model, and elasticsearch will fetch all the messages that are relevant to our query.
     + I'm not sure if we can include the Application_id, Chat_id in our query or not, but if not then we can just filter the JSON result.
     + I had a good experience with Kibana as well.
