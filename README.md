@@ -63,13 +63,13 @@ Each table is a model.
         + `/application/:application_token/chat/:Chat_id/message/delete/:message_id` Delete a specific message.
 
 ## ElasticSearch ##
-+ I couldn't complete this task fully, but I wantched the first two lectures for the ElasticSearch on their official youtube channel and also I was following this [blog](https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial), but I had an error when I was creating index for the message model that I couldn't solve (or find a solution).
++ I couldn't complete this task fully, but I watched the first two lectures for the ElasticSearch on their official youtube channel and also I was following this [blog](https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial), but I had an error when I was creating index for the message model that I couldn't solve (or find a solution).
 + My idea is just to make a single index for the Message model, and elasticsearch will fetch all the messages that are relevant to our query.
     + I'm not sure if we can include the Application_id, Chat_id in our query or not, but if not then we can just filter the JSON result.
     + I had a good experience with Kibana as well.
 And I would like to thank you for letting me know about this microservice "I believe".
 ## Message Queue ##
 + I didn't even have enough time for this, since I had to learn ROR and this is actually my first RESTFul API to implement.
-+ I have a little knowledge about message queue and how the handle loads on the server, by serving specific amount of customers/threads and use a database with {key, value} pair to save the result.
++ I have a little knowledge about message queue and how to handle loads on the server, by serving specific amount of customers/threads and use a database with {key, value} pair to save the result.
 + Also, I know a little about locks and concurrent programming to prevent overwriting values in the databases "theoretical knowledge only".
 + But since I'm just graduated, and don't really have work experience. I never exposed to a message queue as implementation, but I believe I used it once in Java while doing a multi-threading task.
