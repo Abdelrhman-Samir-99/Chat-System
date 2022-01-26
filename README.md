@@ -35,7 +35,7 @@ We should create a RESTful API for a system that creates (applications → chats
 
 
 ### Indices ###
-+ there is a default index on each key.
++ there is a default index on each key/ column.
 + I made 2 other indices
     + Chat model → (id, Application_id)
     + Message model → (message_id, Application_id, Chat_id)
