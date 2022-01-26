@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
   	def show
   		if Chat.exists_in_messages_cache(params[:application_token], params[:Chat_id]) == 0
   			chat = Chat.find_chat_by_id_and_token(params[:Chat_id], params[:application_token])	
-  			render json: {messages_count: chat[:messages_count]}, status: :found
+  			render json: {messages_count: chat[:messages_count]}, status: :ok
   		else
   			messages_count = Chat.fetch_from_messages_cache(params[:application_token], params[:Chat_id])
   			render json: {messages_count: messages_count}, status: :ok
