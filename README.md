@@ -81,7 +81,7 @@ We should create a RESTFul API for a system that creates (applications -> chats 
         + `/application/:application_token/chat/:Chat_id/message/delete/:message_id` Delete a specific message.
 
 ## Specs ##
-I made specs for each route I have, not the best automated test cases. But I already did my best to test it properly "manually".
+I made specs for each contoller I have, not the best automated test cases. But I already did my best to test it properly "manually".
 ## What I couldn't finish yet ##
 ### ElasticSearc ###
 + I believe I finally have the proper setup (I had a bug before), but I couldn't understand it properly + finish it on time.
