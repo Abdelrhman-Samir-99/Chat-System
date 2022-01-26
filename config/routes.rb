@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  
   # creating application.
-  post "/application/create/:name", to: "applications#create"
+  put "/application/create/:name", to: "applications#create"
     
   # get specific application
   get "/application/show/:application_token", to: "applications#show"
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
   #########################################################################################
 
   # adding new chat
-  post "/application/:application_token/chat/create", to: "chats#create"
+  put "/application/:application_token/chat/create", to: "chats#create"
 
   # show all chats
   get "/application/:application_token/chat/index", to: "chats#index"  
@@ -24,12 +23,12 @@ Rails.application.routes.draw do
   get "/application/:application_token/chat/show/:Chat_id", to: "chats#show"
   
   # delete a specific chat, with all of its messages 
-  delte "/application/:application_token/chat/delete/:Chat_id", to: "chats#destroy"
+  delete "/application/:application_token/chat/delete/:Chat_id", to: "chats#destroy"
 
   ##########################################################################################
 
   # Add a message.
-  post "/application/:application_token/chat/:Chat_id/message/create/:body", to: "messages#create"
+  put "/application/:application_token/chat/:Chat_id/message/create/:body", to: "messages#create"
   
   # get all messages.
   get "/application/:application_token/chat/:Chat_id/message/index", to: "messages#index"
@@ -39,7 +38,7 @@ Rails.application.routes.draw do
 
   
   # Update that specific message.
-  put "/application/:application_token/chat/:Chat_id/message/update/:message_id/:body", to: "messages#update"
+  post "/application/:application_token/chat/:Chat_id/message/update/:message_id/:body", to: "messages#update"
 
   # Delete that specific message.
   delete "/application/:application_token/chat/:Chat_id/message/delete/:message_id", to: "messages#destroy"

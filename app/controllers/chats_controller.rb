@@ -1,59 +1,28 @@
 class ChatsController < ApplicationController
 	def create
-		application = Application.find_by(Application_Token: params[:application_token])
-    
-		if application and Chat.create(Application_id: application[:id], messages_count: 0, Chat_id: application[:chats_count] + 1) and application.update(chats_count: application[:chats_count] + 1)
-        	render json: {chat_id: Chat.last[:Chat_id]}, status: :ok
-      	else
-      		render json: {statuse: "failed"}
-        end
-  	end
+		chat = Chat.add_chat(params[:application_token])
+	    render json: {chat_id: chat[:Chat_id]}, status: :created
+   	end
 	
 	def index
-		application = Application.find_by(Application_Token: params[:application_token])
-    	
-    	if application
-    		chats = Chat.where(Application_id: application[:id])
-		end
-		
-		if chats
-			render json: Chat.all
-		else
-			render json: {statuse: "No chats found!"}
-		end
+		chats = Chat.find_chats_by_token(params[:application_token])
+		render json: chats, status: :ok
 	end
 
 
   	def show
-  		application = Application.find_by(Application_Token: params[:application_token])
-    	
-    	if application
-    		chat = Chat.find_by(Application_id: application[:id], Chat_id: params[:Chat_id])
-  		end
-
-  		if chat
-  			render json: chat, status: :ok
+  		if Chat.exists_in_messages_cache(params[:application_token], params[:Chat_id]) == 0
+  			chat = Chat.find_chat_by_id_and_token(params[:Chat_id], params[:application_token])	
+  			render json: {messages_count: chat[:messages_count]}, status: :found
   		else
-  			render json: {statuse: "This chat does not exist!"}
-   		end
+  			messages_count = Chat.fetch_from_messages_cache(params[:application_token], params[:Chat_id])
+  			render json: {messages_count: messages_count}, status: :ok
+  		end
    	end
 
 
-
-	def destroy
-		
-		application = Application.find_by(Application_Token: params[:application_token])
-    	
-    	if application
-    		chat = Chat.find_by(Application_id: application[:id], Chat_id: params[:Chat_id])
-  		end
-  		
-  		# this condition should be a transaction.
-		if chat and Chat.destroy_by(Application_id: application[:id], Chat_id: chat[:Chat_id]) and application.update(chats_count: application[:chats_count] - 1)
-			render json: {statuse: "The chat has been deleted!"}, status: :ok
-		else
-			render json: {statuse: "Failed to delete the chat"}, status: :not_found
-		end
+	def destroy		
+		Chat.destroy_chat_by_id_and_token(params[:Chat_id], params[:application_token])
+		render json: {statuse: "The chat has been deleted!"}, status: :no_content
 	end
-
 end

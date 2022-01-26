@@ -1,35 +1,28 @@
 class ApplicationsController < ApplicationController
 	def create
-    	# retrieving the last created application
-    	if Application.create(name: params[:name], chats_count: 0)
-    		render json: {application_Token: Application.last[:Application_Token]}, status: :found
-    	else
-    		render json: {statuse: "failed"}
-    	end
-  	end
+    	application = Application.add_application(params[:name])
+    	render json: {application_Token: application[:Application_Token]}, status: :created
+    end
 
   	
+	# try to render only Application_token
 	def index
 		render json: Application.all, status: :ok
 	end
 
   	def show
-   	 	application = Application.find_by(Application_Token: params[:application_token])
- 		
- 		if application
- 			render json: application, status: :found
- 		else
- 			render json: {statuse: 'The application does not exist!'}, status: :not_found
- 		end
-   	 end
+  	# there is a problem with the cahts_count cache... always off by one.
+  	#	if Application.exists_in_chats_cache(params[:application_token]) == 0
+  			application = Application.find_application_by_token(params[:application_token])
+ 			render json: {chats_count: application[:chats_count]}, status: :found
+ 	#	else
+ 	#		chats_count = $chats_count_cache.get(params[:application_token])
+ 	#		render json: {chats_count: chats_count}, status: :ok
+ 	#	end
+   	end
 
 	def destroy
-		application = Application.find_by(Application_Token: params[:application_token])
-		if application and application.destroy
-			# this will be rendered even if the application does not exist.       may need to be fixed.
-			render json: {statuse: "application has been deleted!"}, status: :gone
-		else
-			render json: {statuse: "Failed to delete the application!"}, status: :not_found
-		end
+		Application.destroy_application_by_token(params[:application_token])
+		render json: {status: "application has been deleted!"}, status: :no_content
 	end
 end
