@@ -23,7 +23,7 @@ We should create a RESTFul API for a system that creates (applications -> chats 
 + We should maintain the referential integrity.
 + We should take care about race conditions.
 + We should use ElasticSearch for the partial search.
-+ We should consider using a message queue to do some process in the back ground.
++ We should consider using a message queue to do some work in the back ground.
 + We should add indecies in our databases to get a better query performance.
 + We may consider using a cache.
 + We should write specs for our API.
@@ -31,8 +31,8 @@ We should create a RESTFul API for a system that creates (applications -> chats 
 
 
 ## Database (Models) ##
+![dbSchema](https://user-images.githubusercontent.com/77211992/151088625-8aaa96b0-76b7-40ab-84e2-32c26be94d02.svg)
 
-![dbSchema](https://user-images.githubusercontent.com/77211992/150012374-2260b7ed-fe86-48b1-84a4-f1ffd9f4d868.png)
 
 ### Indecies ###
 + there is a default index on each key.
@@ -54,7 +54,7 @@ We should create a RESTFul API for a system that creates (applications -> chats 
 + MessagesController: Handling everyhing related to the message.
 ## Routes ##
 + Application routes:
-    + POST methods:
+    + PUT methods:
         + `/application/create/:name` Creating a new application.
     + GET methods:
         + `/application/index` Shows all applications.
@@ -62,7 +62,7 @@ We should create a RESTFul API for a system that creates (applications -> chats 
     + DELETE methods:
         + `/application/delete/:application_token` Delete a specific application with all of its chats and messages.
 + Chat routes:
-    + POST methods:
+    + PUT methods:
         + `application/:application_token/chat/create` Creating a new chat in a specific application.
     + GET methods:
         + `/application/:application_token/chat/index` Shows all chats in a specific application.
@@ -70,23 +70,23 @@ We should create a RESTFul API for a system that creates (applications -> chats 
     + DELETE methods: 
         + `/application/:application_token/chat/delete/:Chat_id` Delete a specific chat with is messages.
 + Message routes:
-    + POST methods: 
+    + PUT methods: 
         + `/application/:application_token/chat/:Chat_id/message/create/:body` Creating a new message.
     + GET methods: 
         + `/application/:application_token/chat/:Chat_id/message/index` Shows all messages for a specfic chat.
         + `/application/:application_token/chat/:Chat_id/message/show/:message_id` Shows a specfic message in a specific chat.
-    + PUT methods: 
+    + POST methods: 
         + `/application/:application_token/chat/:Chat_id/message/update/:message_id/:body` Updating a specific message.
     + DELETE methods: 
         + `/application/:application_token/chat/:Chat_id/message/delete/:message_id` Delete a specific message.
 
-## ElasticSearch ##
-+ I couldn't complete this task fully, but I wantched the first two lectures for the ElasticSearch on their official youtube channel and also I was following this [blog](https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial), but I had an error when I was creating index for the message model that I couldn't solve (or find a solution).
-+ My idea is just to make a single index for the Message model, and elasticsearch will fetch all the messages that are relevant to our query.
-    + I'm not sure if we can include the Application_id, Chat_id in our query or not, but if not then we can just filter the JSON result.
-    + I had a good experience with Kibana as well.
-And I would like to thank you for letting me know about this microservice "I believe".
-## Message Queue ##
-+ I didn't even have enough time for this, since I had to learn ROR and this is actually my first RESTFul API to implement.
-+ I have a little knowledge about message queue and how the handle loads on the server, by serving specific amount of customers/threads and use a database with {key, value} pair to save the result.
-+ But since I'm just graduated, and don't really have work experience. I never exposed to a message queue as implementation, but I believe I used it once in Java while doing a multi-threading task.
+## Specs ##
+I made specs for each route I have, not the best automated test cases. But I already did my best to test it properly "manually".
+## What I couldn't finish yet ##
+### ElasticSearc ###
++ I believe I finally have the proper setup (I had a bug before), but I couldn't understand it properly + finish it on time.
++ I watched the first 2 lectures on their official Youtube channel, and used Kibana for a little bit.
++ I was just following this [blog](https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial).
+### Message Queue ###
++ Sadly, I couldn't finish this as well, but planning to study it for a side project inshaa Allah.
++ I believe I only know a little about message queues and THEORITICAL knowledge only.
