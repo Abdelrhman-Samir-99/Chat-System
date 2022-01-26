@@ -39,9 +39,11 @@ We should create a RESTful API for a system that creates (applications → chats
 + I didn't need to make any new index my self, because of the way I do my query, but I coinsidered:
     + Message model → (message_id, Application_id, Chat_id) to retrieve a message fast
         + But decided not to make this one, since our write query will be much much more than our read.
+### Race condition ###
 + I used transaction and pessimistic locks too:
     + handle race conditions.
     + make sure that I updated the chats_count/ messages_count. (I believe that there is something in ActiveRecord that can handle that automatically, not sure)
+### Cache ###
 + I used Redis cache: But not as I wished to do
     + I didn't implement the eviction strategy, due to lack of time + first time ever to use it.
     + I wished if I can implement LRU or LFU cache (I can implement both in C++).
