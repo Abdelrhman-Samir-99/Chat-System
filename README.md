@@ -90,3 +90,7 @@ I made specs for each contoller I have, not the best automated test cases. But I
 ### Message Queue ###
 + Sadly, I couldn't finish this as well, but planning to study it for a side project inshaa Allah.
 + I believe I only know a little about message queues and THEORITICAL knowledge only.
+### Modules and namespaces ###
+I will start to understand namespace and modules more, so I can keep my models / controllers small in size and organized.
+### Exception handling ###
+I used the default exception, I will look more about writing APIs best practice.
