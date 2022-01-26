@@ -36,9 +36,8 @@ We should create a RESTful API for a system that creates (applications → chats
 
 ### Indices ###
 + there is a default index on each key/ column.
-+ I made 2 other indices
-    + Chat model → (id, Application_id)
-    + Message model → (message_id, Application_id, Chat_id)
++ I didn't need to make any new index my self, because of the way I do my query, but I coinsidered:
+    + Message model → (message_id, Application_id, Chat_id) to retrieve a message fast
         + But decided not to make this one, since our write query will be much much more than our read.
 + I used transaction and pessimistic locks too:
     + handle race conditions.
