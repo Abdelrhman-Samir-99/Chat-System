@@ -12,7 +12,7 @@ We should create a RESTful API for a system that creates (applications → chats
         + Must be unique.
         + Starting from 1.
      + When we create or delete a chat, chats_count should be updated in the application table.
-+ We should be able to messages in the specific chat, by using Chat_id and application token.
++ We should be able to add messages in the specific chat, by using Chat_id and application token.
     + Every message should have a message_id
          + Must be unique.
          + Starting from 1.
