@@ -38,7 +38,8 @@ We should create a RESTful API for a system that creates (applications → chats
 + there is a default index on each key.
 + I made 2 other indices
     + Chat model → (id, Application_id)
-    + Message model → ()
+    + Message model → (message_id, Application_id, Chat_id)
+        + But decided not to make this one, since our write query will be much much more than our read.
 + I used transaction and pessimistic locks too:
     + handle race conditions.
     + make sure that I updated the chats_count/ messages_count. (I believe that there is something in ActiveRecord that can handle that automatically, not sure)
