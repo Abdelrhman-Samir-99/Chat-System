@@ -70,7 +70,7 @@ We should create a RESTful API for a system that creates (applications → chats
         + `/application/:application_token/chat/index` Shows all chats in a specific application.
         + `/application/:application_token/chat/show/:Chat_id` Shows a specific chat using Chat_ID.
     + DELETE methods: 
-        + `/application/:application_token/chat/delete/:Chat_id` Delete a specific chat with is messages.
+        + `/application/:application_token/chat/delete/:Chat_id` Delete a specific chat with its messages.
 + Message routes:
     + PUT methods: 
         + `/application/:application_token/chat/:Chat_id/message/create/:body` Creating a new message.
