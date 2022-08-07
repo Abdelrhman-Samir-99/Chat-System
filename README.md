@@ -1,5 +1,3 @@
-# Instabug Task #
-
 # System requirements #
 We should create a RESTful API for a system that creates (applications → chats → messages) with the following requirements:
 
